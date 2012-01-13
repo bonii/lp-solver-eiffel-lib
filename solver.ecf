@@ -8,7 +8,8 @@
 		<setting name="concurrency" value="thread"/>
 		<precompile name="base_pre" location="\usr\local\eiffel-68\precomp\spec\linux-x86-64\base-mt-safe.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
-		<library name="process" location="$ISE_LIBRARY\library\process\process.ecf"/>
+		<library name="process" location="$ISE_LIBRARY\library\process\process-safe.ecf"/>
+		<library name="time" location="$ISE_LIBRARY\library\time\time-safe.ecf"/>
 		<cluster name="solver" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>

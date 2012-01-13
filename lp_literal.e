@@ -9,7 +9,7 @@ class
 
 inherit ANY
 	redefine
-		out
+		out, is_equal
 	end
 
 create
@@ -24,6 +24,10 @@ feature
 	set_variable (new_variable: like variable)
 		do
 			variable := new_variable
+
+			-- Remove trailing and leading spaces
+			variable.left_adjust
+			variable.right_adjust
 		ensure
 			variable = new_variable
 		end
@@ -63,4 +67,17 @@ feature
 		Result.append(quantifier.out)
 		Result.append(variable)
 	end
+
+	is_equal(other : like Current) : BOOLEAN
+	do
+		Result := Precursor(other)
+		if Result = False then
+			if variable.is_equal (other.variable) and quantifier.is_equal (other.quantifier) then
+				Result := True
+			else
+				Result := False
+			end
+		end
+	end
+	
 end

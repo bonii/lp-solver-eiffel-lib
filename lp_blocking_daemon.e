@@ -12,10 +12,14 @@ create
 
 feature
 	cache : ARRAYED_LIST[LP_CACHE_ENTRY]
+	file_location : STRING
+	command_location : STRING
 
-	make
+	make(new_file_location : like file_location; new_command_location : like command_location)
 		do
 			create cache.make(0)
+			file_location := new_file_location
+			command_location := new_command_location
 		end
 
 	set_cache(newcache : like cache)
@@ -48,7 +52,9 @@ feature
 	get_index_in_cache(model : LP_MODEL) : INTEGER
 		local
 			found_flag : BOOLEAN
+			model_checker : LP_MODEL_LIST_CHECKER
 		do
+			create model_checker
 			if attached model as attached_model then
 				Result := -1
 				create found_flag
@@ -59,13 +65,13 @@ feature
 				loop
 					if attached cache.item as cacheitem then
 						if attached cacheitem.model as cachemodel then
-							if cachemodel.is_same(model) then
+							if model_checker.is_same (cachemodel, model) then
 								found_flag := True
 								Result := cache.index
-								cache.forth
 							end
 						end
 					end
+					cache.forth
 				end
 			end
 		end
@@ -126,13 +132,9 @@ feature
 	get_command_to_execute : STRING
 		local
 			file_name : STRING
-			command_location : STRING
-			file_location : STRING
 		do
 			file_name := get_file_name(True)
 			create Result.make_empty
-			file_location := "/universe/studies/eth-zurich/eiffel-lang/solver/"
-			command_location := "/usr/bin/"
 			Result.append (command_location)
 			Result.append ("lp_solve ")
 			Result.append (file_location)
@@ -142,14 +144,18 @@ feature
 
 	run_model(model : LP_MODEL)
 		local
-			output_file, input_file : PLAIN_TEXT_FILE
-			file_name,command,command_location,file_location,lp_result : STRING
+			command,lp_result,result_file_name : STRING
 			cache_entry : LP_CACHE_ENTRY
 			pf : PROCESS_FACTORY
 			p : PROCESS
+			start_time, end_time : DATE_TIME
+			diff : INTERVAL[TIME]
+			diff_new : TIME_DURATION
 		do
+			create start_time.make_now
 			if is_in_cache(model) then
 				print("%NFound in cache%N")
+				lp_result := cache.at(get_index_in_cache (model)).run_result
 			else
 				print("%NWriting model file")
 				write_model_file(model)
@@ -161,16 +167,23 @@ feature
 				print(command)
 				if attached pf.process_launcher_with_command_line (command, "") as attached_p then
 					clear_result_file
-					attached_p.redirect_output_to_file(get_file_name(False))
+					result_file_name := get_file_name(False)
+					attached_p.redirect_output_to_file(result_file_name)
+					attached_p.redirect_error_to_file(result_file_name)
 					attached_p.launch
 					attached_p.wait_for_exit
 					print("%NReading result file")
 					lp_result.append (read_result_file)
+
 				end
-				print("%N")
-				print(lp_result)
 				create cache_entry.make_from(model,False,lp_result)
 				cache.extend(cache_entry)
 			end
+			print("%N")
+			create end_time.make_now
+			print(lp_result)
+			print("%NExecuted the solver in seconds : ")
+			print(end_time.seconds - start_time.seconds)
+			print("%N")
 		end
 end

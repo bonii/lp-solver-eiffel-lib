@@ -9,7 +9,11 @@ class
 
 inherit ANY
 	redefine
-		out
+		out, is_equal
+	end
+	LP_LIST
+	undefine
+		out,is_equal
 	end
 
 create
@@ -46,11 +50,6 @@ feature
 			constraints.extend (newconstraint)
 		ensure
 			constraints.count = old constraints.count + 1
-		end
-
-	is_same(another_model : like Current) : BOOLEAN
-		do
-			Result := False
 		end
 
 	make
@@ -111,5 +110,10 @@ feature
 				constraints.forth
 				Result.append("%N")
 			end
+		end
+
+	is_equal(other : like Current) : BOOLEAN
+		do
+			Result := objective.is_equal (other.objective) and then is_equal_any_order(constraints,other.constraints)
 		end
 end

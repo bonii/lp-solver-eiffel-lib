@@ -9,7 +9,12 @@ class
 
 inherit ANY
 	redefine
-		out
+		out, is_equal
+	end
+
+	LP_LIST
+	undefine
+		out, is_equal
 	end
 
 create
@@ -129,5 +134,31 @@ feature
 				expression.item.set_quantifier (expression.item.quantifier.opposite)
 				expression.forth
 			end
+			expression.start
 		end
+
+	negated_dup : like Current
+		local
+			literal : LP_LITERAL
+		do
+			create Result.make
+			from
+				expression.start
+			until
+				expression.off
+			loop
+				create literal.make
+				literal.set_quantifier (expression.item.quantifier.opposite.twin)
+				literal.set_variable (expression.item.variable.twin)
+				Result.expression.extend (literal)
+				expression.forth
+			end
+			expression.start
+		end
+
+	is_equal(other : like Current) : BOOLEAN
+	do
+		Result := is_equal_any_order (expression, other.expression)
+	end
+
 end

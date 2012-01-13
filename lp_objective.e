@@ -9,7 +9,7 @@ class
 
 inherit ANY
 	redefine
-		out
+		out, is_equal
 	end
 
 create
@@ -40,8 +40,8 @@ feature
 
 	make_from(new_expression : like expression ; min_flag : like minimize)
 		do
-			create expression.make_from(new_expression.expression)
-			minimize := min_flag
+			set_expression (new_expression)
+			set_minimize (min_flag)
 		end
 
 	out : STRING
@@ -52,5 +52,14 @@ feature
 			end
 			Result.append (expression.out)
 			Result.append (";")
+		end
+
+	is_equal(other : like Current) : BOOLEAN
+		do
+			if minimize.is_equal(other.minimize) then
+				Result := expression.is_equal (other.expression)
+			else
+				Result := expression.is_equal (other.expression.negated_dup)
+			end
 		end
 end

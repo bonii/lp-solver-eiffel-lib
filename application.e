@@ -18,7 +18,6 @@ feature {NONE} -- Initialization
 			-- Run application.
 		local
 			constraint,constraint1 : LP_CONSTRAINT
-			file1 : PLAIN_TEXT_FILE
 			objective : LP_OBJECTIVE
 			model : LP_MODEL
 			example,example1,example2,example3 , example4, example5: LP_LITERAL
@@ -28,8 +27,6 @@ feature {NONE} -- Initialization
 			var_list : ARRAYED_LIST[STRING]
 			expression , expression1 : LP_EXPRESSION
 			daemon : LP_BLOCKING_DAEMON
-			pf : PROCESS_FACTORY
-			p : PROCESS
 		do
 			--| Add your code here
 			create example.make
@@ -59,14 +56,12 @@ feature {NONE} -- Initialization
 			literal_list1.extend (example5)
 			create expression1.make
 			expression1.set_compacted_expression (literal_list1)
-			create constraint1.make_from (expression1,">=", 0)
+			create constraint1.make_from (expression1,"<~", 0)
 			create var_list.make (0)
 			var_list.extend ("X")
 			var_list.extend ("Y")
 			create expression.make
 			create constraint.make
-			create file1.make_open_write ("sample1.lp")
-
 			--expression.set_expression (literal_list)
 			--print("%N")
 			expression.set_compacted_expression (literal_list)
@@ -84,12 +79,11 @@ feature {NONE} -- Initialization
 			constraints.extend (constraint)
 			constraints.extend (constraint1)
 			create model.make_from (var_list, constraints, objective)
-			file1.put_string (model.out)
-			file1.close
 			print("%NReal Thing%N")
 			print(model)
 
-			create daemon.make
+			create daemon.make("/universe/studies/eth-zurich/eiffel-lang/solver/","/usr/bin/")
+			daemon.run_model(model)
 			daemon.run_model(model)
 			--expression.add_literal (example1)
 			--print(expression)

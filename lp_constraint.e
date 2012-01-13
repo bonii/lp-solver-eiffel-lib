@@ -9,7 +9,7 @@ class
 
 inherit ANY
 	redefine
-		out
+		out,is_equal
 	end
 
 create
@@ -32,6 +32,10 @@ feature
 			is_valid_op(newop)
 		do
 			relational_operator := newop
+
+			-- Remove leading and trailing spaces
+			relational_operator.left_adjust
+			relational_operator.right_adjust
 		ensure
 			relational_operator = newop
 		end
@@ -79,5 +83,11 @@ feature
 			set_expression (new_expression)
 			set_relational_operator (new_op)
 			set_constant (new_constant)
+		end
+
+	is_equal(other : like Current) : BOOLEAN
+		do
+			Result := relational_operator.is_equal (other.relational_operator) and then constant.is_equal (other.constant)
+						and then expression.is_equal(other.expression)
 		end
 end
