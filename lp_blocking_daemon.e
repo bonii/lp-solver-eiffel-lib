@@ -70,6 +70,76 @@ feature
 			end
 		end
 
+	write_model_file(model : LP_MODEL)
+		local
+			output_file : PLAIN_TEXT_FILE
+			file_name : STRING
+		do
+			file_name := get_file_name(True)
+			create output_file.make_open_write (file_name)
+			output_file.put_string (model.out)
+			output_file.close
+		end
+
+	clear_result_file
+		local
+			temp_file : PLAIN_TEXT_FILE
+			file_name : STRING
+		do
+			file_name := get_file_name(False)
+			create temp_file.make_open_write (file_name)
+			temp_file.close
+		end
+
+	read_result_file : STRING
+		local
+			input_file : PLAIN_TEXT_FILE
+			file_name : STRING
+		do
+			create Result.make_empty
+			file_name := get_file_name(False)
+			create input_file.make_open_read (file_name)
+			from
+				input_file.start
+			until
+				input_file.off
+			loop
+				input_file.read_line
+				Result.append (input_file.last_string.twin)
+				Result.append ("%N")
+			end
+			input_file.close
+		end
+
+	get_file_name(input_file : BOOLEAN) : STRING
+		do
+			create Result.make_empty
+			Result.append ("lp_model")
+			Result.append ((cache.count + 1).out)
+			if input_file = True then
+				Result.append (".lp")
+			else
+				Result.append(".res")
+			end
+		end
+
+	get_command_to_execute : STRING
+		local
+			file_name : STRING
+			command_location : STRING
+			file_location : STRING
+		do
+			file_name := get_file_name(True)
+			create Result.make_empty
+			file_location := "/universe/studies/eth-zurich/eiffel-lang/solver/"
+			command_location := "/usr/bin/"
+			Result.append (command_location)
+			Result.append ("lp_solve ")
+			Result.append (file_location)
+			Result.append (file_name)
+		end
+
+
 	run_model(model : LP_MODEL)
 		local
 			output_file, input_file : PLAIN_TEXT_FILE
@@ -81,47 +151,25 @@ feature
 			if is_in_cache(model) then
 				print("%NFound in cache%N")
 			else
-				print("%NWriting to file")
-				create file_name.make_empty
-				create command.make_empty
-				create command_location.make_empty
-				create file_location.make_empty
-				create lp_result.make_empty
-				file_name.append ("lp_model")
-				file_name.append ((cache.count + 1).out)
-				file_name.append (".lp")
-				file_location.append("/universe/studies/eth-zurich/eiffel-lang/solver/")
-				command_location.append ("/usr/bin/")
-				command_location.append ("lp_solve ")
-				command.append (command_location)
-				command.append (file_location)
-				command.append (file_name)
-				print("%N")
-				print(command)
-				create output_file.make_open_write (file_name)
-				output_file.put_string (model.out)
-				output_file.close
+				print("%NWriting model file")
+				write_model_file(model)
 				print("%NFile Written")
+				create lp_result.make_empty
 				-- Run the lp process
 				create pf
+				command := get_command_to_execute
+				print(command)
 				if attached pf.process_launcher_with_command_line (command, "") as attached_p then
-					attached_p.redirect_output_to_file("foo.txt")
+					clear_result_file
+					attached_p.redirect_output_to_file(get_file_name(False))
 					attached_p.launch
 					attached_p.wait_for_exit
-					create input_file.make_open_read ("foo.txt")
-					from
-						input_file.start
-					until
-						input_file.off
-					loop
-						input_file.read_line
-						lp_result.append (input_file.last_string.twin)
-						lp_result.append ("%N")
-					end
+					print("%NReading result file")
+					lp_result.append (read_result_file)
 				end
 				print("%N")
 				print(lp_result)
-				create cache_entry.make_from(model,False,0)
+				create cache_entry.make_from(model,False,lp_result)
 				cache.extend(cache_entry)
 			end
 		end

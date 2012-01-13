@@ -13,7 +13,7 @@ create
 feature
 	model : LP_MODEL
 	is_running : BOOLEAN
-	run_result : INTEGER
+	run_result : STRING
 
 	set_model(newmodel : like model)
 		do
@@ -40,7 +40,7 @@ feature
 		do
 			create model.make
 			create is_running.default_create
-			create run_result.default_create
+			create run_result.make_empty
 		end
 
 	make_from(new_model : like model ; run_val : like is_running ; new_result : like run_result)
