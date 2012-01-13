@@ -28,8 +28,8 @@ feature {NONE} -- Initialization
 			var_list : ARRAYED_LIST[STRING]
 			expression , expression1 : LP_EXPRESSION
 			daemon : LP_BLOCKING_DAEMON
-			--pf : PROCESS_FACTORY
-			--p : PROCESS
+			pf : PROCESS_FACTORY
+			p : PROCESS
 		do
 			--| Add your code here
 			create example.make
