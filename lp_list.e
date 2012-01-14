@@ -26,6 +26,7 @@ feature {NONE}
 		do
 			from
 				list1.start
+				Result := True
 			until
 				list1.off or not Result
 			loop

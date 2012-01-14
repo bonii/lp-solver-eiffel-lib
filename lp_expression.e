@@ -24,6 +24,7 @@ feature
 	expression : ARRAYED_LIST[LP_LITERAL]
 
 	set_expression(new_expression : like expression)
+		-- Always use the compacted expression setter
 		do
 			expression := new_expression
 		end
@@ -96,6 +97,7 @@ feature
 	add_literal(new_literal : LP_LITERAL)
 		do
 			expression.extend (new_literal)
+			set_compacted_expression (expression)
 		end
 
 	out : STRING

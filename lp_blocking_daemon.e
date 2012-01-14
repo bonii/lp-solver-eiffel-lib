@@ -154,9 +154,10 @@ feature
 		do
 			create start_time.make_now
 			if is_in_cache(model) then
-				print("%NFound in cache%N")
+				print("%NFound in cache !!! Result follows %N")
 				lp_result := cache.at(get_index_in_cache (model)).run_result
 			else
+				print("%NNot found in cache !!! Asking LP SOLVE to solve%N")
 				print("%NWriting model file")
 				write_model_file(model)
 				print("%NFile Written")
@@ -164,12 +165,12 @@ feature
 				-- Run the lp process
 				create pf
 				command := get_command_to_execute
-				print(command)
+				--print(command)
 				if attached pf.process_launcher_with_command_line (command, "") as attached_p then
 					clear_result_file
 					result_file_name := get_file_name(False)
 					attached_p.redirect_output_to_file(result_file_name)
-					attached_p.redirect_error_to_file(result_file_name)
+					--attached_p.redirect_error_to_file(result_file_name)
 					attached_p.launch
 					attached_p.wait_for_exit
 					print("%NReading result file")

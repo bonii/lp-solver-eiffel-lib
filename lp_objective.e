@@ -48,9 +48,11 @@ feature
 		do
 			create Result.make_empty
 			if minimize = True then
-				expression.negate
+				Result.append (expression.negated_dup.out)
+			else
+				Result.append (expression.out)
 			end
-			Result.append (expression.out)
+
 			Result.append (";")
 		end
 
