@@ -18,12 +18,14 @@ feature {NONE} -- Initialization
 			-- Run application.
 		local
 			test : LP_TEST
-			model1,model2,model3 : LP_MODEL
+			model1,model2,model3,model4,model5 : LP_MODEL
 			daemon : LP_BLOCKING_DAEMON
 		do
 			create test
-			model1 := test.get_model_1
+
 			create daemon.make("/universe/studies/eth-zurich/eiffel-lang/solver/","/usr/bin/")
+
+			model1 := test.get_model_1
 			print(model1.out)
 			daemon.run_model (model1)
 
@@ -34,6 +36,14 @@ feature {NONE} -- Initialization
 			model3 := test.get_model_3
 			print(model3.out)
 			daemon.run_model (model3)
+
+			model4 := test.get_model_4
+			print(model4.out)
+			daemon.run_model (model4)
+
+			model5 := test.get_model_5
+			print(model5.out)
+			daemon.run_model (model5)
 
 --			print(model1.constraints.count)
 --			print(" ")

@@ -87,7 +87,16 @@ feature
 
 	is_equal(other : like Current) : BOOLEAN
 		do
-			Result := relational_operator.is_equal (other.relational_operator) and then constant.is_equal (other.constant)
-						and then expression.is_equal(other.expression)
+			Result := relational_operator.is_equal (other.relational_operator)
+			if not Result then
+				if relational_operator.is_equal ("<") and other.relational_operator.is_equal (">")
+					or  relational_operator.is_equal ("<=") and other.relational_operator.is_equal (">=")
+					or  relational_operator.is_equal (">") and other.relational_operator.is_equal ("<")
+					or  relational_operator.is_equal (">=") and other.relational_operator.is_equal ("<=") then
+					Result := constant.is_equal (other.constant.opposite) and then expression.is_equal (other.expression.negated_dup)
+				else
+					Result := constant.is_equal (other.constant) and then expression.is_equal(other.expression)
+				end
+			end
 		end
 end
