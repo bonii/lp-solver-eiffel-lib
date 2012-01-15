@@ -136,7 +136,7 @@ feature
 
 	get_model_3 : LP_MODEL
 		-- Generate the model designed in get_model_1 but with objective expression negated and objective to be minimized
-		-- In essence the model remains where the objective has been negated but the maximisation job has been changed to minimize
+		-- In essence the model remains same where the objective has been negated but the maximisation job has been changed to minimization
 		local
 			literal1, literal2, literal3, literal4, literal5, literal6 : LP_LITERAL
 			expression1, expression2, expression3 : LP_EXPRESSION
@@ -201,7 +201,7 @@ feature
 
 	get_model_4 : LP_MODEL
 		-- Generate a model with expressions containing duplicated variables 1X + 1X instead of 2X
-		-- It is the same as the model in get_model_1
+		-- It is the same as the model in get_model_1 (A lot of such test cases can be formed and would be recognised as same in this library)
 		local
 			literal1, literal2, literal3, literal4, literal5, literal6, literal7, literal8 : LP_LITERAL
 			expression1, expression2, expression3 : LP_EXPRESSION
