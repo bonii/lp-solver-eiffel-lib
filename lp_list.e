@@ -1,6 +1,6 @@
 note
-	description: "Summary description for {LP_LIST}."
-	author: ""
+	description: "{LP_LIST} models a LP List class to decorate classes with lists with a special list checker which checks list objects in out of order"
+	author: "Vivek Shah"
 	date: "$Date$"
 	revision: "$Revision$"
 
@@ -9,7 +9,8 @@ deferred class
 
 feature
 	is_equal_any_order(list1 : LIST[ANY] ; list2 : LIST[ANY]) : BOOLEAN
-		-- Equality check of lists checks in any order
+		-- Check if lists are equal where list objects may not specifically be in order
+		-- Default list checkers only check in order
 		-- Future enhancement can be to see if one list is superset of another
 	local
 		count : INTEGER

@@ -1,6 +1,6 @@
 note
-	description: "Summary description for {LP_MODEL}."
-	author: ""
+	description: "{LP_MODEL} models a LP model."
+	author: "Vivek Shah"
 	date: "$Date$"
 	revision: "$Revision$"
 
@@ -25,6 +25,7 @@ feature
 	objective : LP_OBJECTIVE
 
 	set_variable_list(newlist : like variable_list)
+		-- Set the list of variables used in the model
 		do
 			variable_list := newlist
 		ensure
@@ -32,6 +33,7 @@ feature
 		end
 
 	set_constraints(newconstraints : like constraints)
+		-- Set the list of constraints in the model
 		do
 			constraints := newconstraints
 		ensure
@@ -39,6 +41,7 @@ feature
 		end
 
 	set_objective(newobjective : like objective)
+		-- Set the objective in the model
 		do
 			objective := newobjective
 		ensure
@@ -46,6 +49,7 @@ feature
 		end
 
 	add_constraint(newconstraint : LP_CONSTRAINT)
+		-- Add a constraint to the existing constraints
 		do
 			constraints.extend (newconstraint)
 		ensure
@@ -53,6 +57,7 @@ feature
 		end
 
 	make
+		-- Create an empty model
 		do
 			create variable_list.make(0)
 			create constraints.make(0)
@@ -60,6 +65,7 @@ feature
 		end
 
 	make_from(new_variable_list : like variable_list ; new_constraints : like constraints ; new_objective : like objective)
+		-- Create a model from existing components
 		do
 			set_variable_list(new_variable_list)
 			set_constraints(new_constraints)
@@ -67,6 +73,7 @@ feature
 		end
 
 	debug_out : STRING
+		-- Generate string representation of model for debugging
 		do
 			create Result.make_empty
 			from
@@ -97,6 +104,7 @@ feature
 		end
 
 	out : STRING
+		-- Generate string representation of model in LP format
 		do
 			create Result.make_empty
 			Result.append (objective.out)
@@ -113,7 +121,11 @@ feature
 		end
 
 	is_equal(other : like Current) : BOOLEAN
+		-- Check if two models are the same
 		do
-			Result := objective.is_equal (other.objective) and then is_equal_any_order(constraints,other.constraints)
+			Result := Precursor(other)
+			if Result = False then
+				Result := objective.is_equal (other.objective) and then is_equal_any_order(constraints,other.constraints)
+			end
 		end
 end

@@ -1,5 +1,5 @@
 note
-	description: "Summary description for {LP_LITERAL}."
+	description: "{LP_LITERAL} models a single literal which form building blocks of expressions for example 2X"
 	author: "Vivek Shah"
 	date: "$Date$"
 	revision: "$Revision$"
@@ -22,6 +22,7 @@ feature
 	quantifier: INTEGER
 
 	set_variable (new_variable: like variable)
+		-- Setter method for the variable in the literal. Trims leading and trailing spaces
 		do
 			variable := new_variable
 
@@ -33,6 +34,7 @@ feature
 		end
 
 	set_quantifier (new_quantifier: like quantifier)
+		-- Setter method for quantifier in the literal
 		do
 			quantifier := new_quantifier
 		ensure
@@ -40,6 +42,7 @@ feature
 		end
 
 	is_same (literal: attached LP_LITERAL): BOOLEAN
+		-- Method to check if 2 literals have same variables.
 		do
 			Result := False
 			if variable.is_equal (literal.variable) then
@@ -50,34 +53,37 @@ feature
 		end
 
 	make_from(literal : attached LP_LITERAL)
-	do
-		set_quantifier (literal.quantifier)
-		set_variable (literal.variable)
-	end
+		-- Create clause to create a literal from another literal
+		do
+			set_quantifier (literal.quantifier)
+			set_variable (literal.variable)
+		end
 
 	make
-	do
-		create variable.make_empty
-		create quantifier.default_create
-	end
+		-- Create clause to create an empty literal
+		do
+			create variable.make_empty
+			create quantifier.default_create
+		end
 
 	out : STRING
-	do
-		create Result.make_empty
-		Result.append(quantifier.out)
-		Result.append(variable)
-	end
+		-- String representation of the literal
+		do
+			create Result.make_empty
+			Result.append(quantifier.out)
+			Result.append(variable)
+		end
 
 	is_equal(other : like Current) : BOOLEAN
-	do
-		Result := Precursor(other)
-		if Result = False then
-			if variable.is_equal (other.variable) and quantifier.is_equal (other.quantifier) then
-				Result := True
-			else
-				Result := False
+		-- Check if two literals are the same
+		do
+			Result := Precursor(other)
+			if Result = False then
+				if variable.is_equal (other.variable) and quantifier.is_equal (other.quantifier) then
+					Result := True
+				else
+					Result := False
+				end
 			end
 		end
-	end
-	
 end

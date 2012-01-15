@@ -1,11 +1,13 @@
 note
-	description: "Summary description for {LP_SINGLEBLOCKINGDAEMON}."
-	author: ""
+	description: "{LP_SINGLEBLOCKINGDAEMON} models the daemon which runs the LP models and also contains a cache of previous jobs."
+	author: "Vivek Shah"
 	date: "$Date$"
 	revision: "$Revision$"
 
 class
 	LP_BLOCKING_DAEMON
+inherit
+	LP_DAEMON
 
 create
 	make
@@ -13,30 +15,74 @@ create
 feature
 	cache : ARRAYED_LIST[LP_CACHE_ENTRY]
 	file_location : STRING
-	command_location : STRING
+	model_checker : LP_MODEL_CHECKER
+	lp_command : STRING
 
-	make(new_file_location : like file_location; new_command_location : like command_location)
+	make(new_file_location : like file_location; new_lp_command : like lp_command ; new_checker : like model_checker)
+		-- Create a daemon from the constituent components
 		do
 			create cache.make(0)
 			file_location := new_file_location
-			command_location := new_command_location
+			model_checker := new_checker
+			lp_command := new_lp_command
+
+			-- Don't remove leading and trailing spaces from the commands or location because on Windows it might land on problems
 		end
 
-	set_cache(newcache : like cache)
+	run_model(model : LP_MODEL)
+		-- Run the model. Also checks if the model exists in the cache
+		local
+			command,lp_result_string,result_file_name : STRING
+			cache_entry : LP_CACHE_ENTRY
+			pf : PROCESS_FACTORY
+			p : PROCESS
+			start_time, end_time : DATE_TIME
+			diff : INTERVAL[TIME]
+			diff_new : TIME_DURATION
+			index : INTEGER
+			lp_result : LP_RESULT
 		do
-			cache := newcache
-		ensure
-			cache = newcache
+			create start_time.make_now
+			index := get_index_in_cache (model)
+			-- Ideally use is_in_cache but that method does not give index in cache so using the low level method
+			-- gives performance benefit especially in big caches with complex model checkers
+			if not index.is_less (0) then
+				print("%NFound in cache !!! Result follows ")
+				lp_result_string := cache.at(index).run_result.result_string_dump
+			else
+				print("%NNot found in cache !!! Asking LP SOLVE to solve ")
+				write_model_file(model)
+				create lp_result_string.make_empty
+				-- Run the lp process
+				create pf
+				command := get_command_to_execute
+				if attached pf.process_launcher_with_command_line (command, "") as attached_p then
+					clear_result_file
+					result_file_name := get_file_name(False)
+					attached_p.redirect_output_to_file(result_file_name)
+					--attached_p.redirect_error_to_file(result_file_name)
+					attached_p.launch
+					attached_p.wait_for_exit
+					lp_result_string.append (read_result_file)
+					create lp_result.make
+					create cache_entry.make_from(model,False,lp_result)
+					cache_entry.set_result_string_dump (lp_result_string)
+					cache.extend(cache_entry)
+				end
+			end
+			create end_time.make_now
+			print("%N")
+			print(lp_result_string)
+			print("%NExecuted the solver in seconds : ")
+			print(end_time.seconds - start_time.seconds)
+			print("%N")
 		end
 
-	add_to_cache(cacheentry : LP_CACHE_ENTRY)
-		do
-			cache.extend(cacheentry)
-		ensure
-			cache.count = old cache.count + 1
-		end
+feature{NONE}
+	-- Internal methods non exported
 
 	is_in_cache(model : LP_MODEL) : BOOLEAN
+		-- Check if a model exists in the cache
 		local
 			index : INTEGER
 		do
@@ -50,11 +96,11 @@ feature
 
 
 	get_index_in_cache(model : LP_MODEL) : INTEGER
+		-- Get the index of the model in the cache.
+		-- Return -1 if not found in cache
 		local
 			found_flag : BOOLEAN
-			model_checker : LP_MODEL_LIST_CHECKER
 		do
-			create model_checker
 			if attached model as attached_model then
 				Result := -1
 				create found_flag
@@ -77,6 +123,7 @@ feature
 		end
 
 	write_model_file(model : LP_MODEL)
+		-- Write the model respresentation to be solved in the file
 		local
 			output_file : PLAIN_TEXT_FILE
 			file_name : STRING
@@ -88,6 +135,8 @@ feature
 		end
 
 	clear_result_file
+		-- Clear the pre existing result file if it exists since process output is appended to file
+		-- so existing result file with same name must be cleaned up
 		local
 			temp_file : PLAIN_TEXT_FILE
 			file_name : STRING
@@ -98,6 +147,7 @@ feature
 		end
 
 	read_result_file : STRING
+		-- Read the result file write by lp solve
 		local
 			input_file : PLAIN_TEXT_FILE
 			file_name : STRING
@@ -118,8 +168,10 @@ feature
 		end
 
 	get_file_name(input_file : BOOLEAN) : STRING
+		-- Generate the file names in which the model and the result are to be stored
 		do
 			create Result.make_empty
+			Result.append (file_location)
 			Result.append ("lp_model")
 			Result.append ((cache.count + 1).out)
 			if input_file = True then
@@ -130,61 +182,14 @@ feature
 		end
 
 	get_command_to_execute : STRING
+		-- Generate the command to be executed to run lp solve library
 		local
 			file_name : STRING
 		do
 			file_name := get_file_name(True)
 			create Result.make_empty
-			Result.append (command_location)
-			Result.append ("lp_solve ")
-			Result.append (file_location)
+			Result.append (lp_command)
+			Result.append (" ")
 			Result.append (file_name)
-		end
-
-
-	run_model(model : LP_MODEL)
-		local
-			command,lp_result,result_file_name : STRING
-			cache_entry : LP_CACHE_ENTRY
-			pf : PROCESS_FACTORY
-			p : PROCESS
-			start_time, end_time : DATE_TIME
-			diff : INTERVAL[TIME]
-			diff_new : TIME_DURATION
-		do
-			create start_time.make_now
-			if is_in_cache(model) then
-				print("%NFound in cache !!! Result follows %N")
-				lp_result := cache.at(get_index_in_cache (model)).run_result
-			else
-				print("%NNot found in cache !!! Asking LP SOLVE to solve%N")
-				print("%NWriting model file")
-				write_model_file(model)
-				print("%NFile Written")
-				create lp_result.make_empty
-				-- Run the lp process
-				create pf
-				command := get_command_to_execute
-				--print(command)
-				if attached pf.process_launcher_with_command_line (command, "") as attached_p then
-					clear_result_file
-					result_file_name := get_file_name(False)
-					attached_p.redirect_output_to_file(result_file_name)
-					--attached_p.redirect_error_to_file(result_file_name)
-					attached_p.launch
-					attached_p.wait_for_exit
-					print("%NReading result file")
-					lp_result.append (read_result_file)
-
-				end
-				create cache_entry.make_from(model,False,lp_result)
-				cache.extend(cache_entry)
-			end
-			print("%N")
-			create end_time.make_now
-			print(lp_result)
-			print("%NExecuted the solver in seconds : ")
-			print(end_time.seconds - start_time.seconds)
-			print("%N")
 		end
 end

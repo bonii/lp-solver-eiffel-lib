@@ -1,6 +1,6 @@
 note
-	description: "Summary description for {LP_CONSTRAINT}."
-	author: ""
+	description: "{LP_CONSTRAINT} models a Linear Programming constraint."
+	author: "Vivek Shah"
 	date: "$Date$"
 	revision: "$Revision$"
 
@@ -21,6 +21,7 @@ feature
 	constant : INTEGER
 
 	set_expression(newexpression : like expression)
+		-- Set expression in the contraint
 		do
 			expression := newexpression
 		ensure
@@ -28,6 +29,7 @@ feature
 		end
 
 	set_relational_operator(newop : like relational_operator)
+		-- Set relational operator in the constraint
 		require
 			is_valid_op(newop)
 		do
@@ -41,6 +43,7 @@ feature
 		end
 
 	set_constant(newconstant : like constant)
+		-- Set constant in the constraint
 		do
 			constant := newconstant
 		ensure
@@ -48,6 +51,7 @@ feature
 		end
 
 	is_valid_op(newop : like relational_operator) : BOOLEAN
+		-- Check if the operator is a valid Linear Programming Operator
 		do
 			Result := False
 			if attached newop as attached_newop then
@@ -61,6 +65,7 @@ feature
 		end
 
 	out : STRING
+		-- Generate a string representation of the constraint in LP format
 		do
 			create Result.make_empty
 			Result.append(expression.out)
@@ -72,6 +77,7 @@ feature
 		end
 
 	make
+		-- Create clause to make an empty constraint
 		do
 			create expression.make
 			create relational_operator.make_empty
@@ -79,6 +85,7 @@ feature
 		end
 
 	make_from(new_expression : like expression; new_op : like relational_operator; new_constant : like constant)
+		-- Create clause to create a constraint from the constituent componenets
 		do
 			set_expression (new_expression)
 			set_relational_operator (new_op)
@@ -86,14 +93,22 @@ feature
 		end
 
 	is_equal(other : like Current) : BOOLEAN
+		-- Check if two constraints are the same
 		do
-			Result := relational_operator.is_equal (other.relational_operator)
+			Result := Precursor(other)
 			if not Result then
-				if relational_operator.is_equal ("<") and other.relational_operator.is_equal (">")
-					or  relational_operator.is_equal ("<=") and other.relational_operator.is_equal (">=")
-					or  relational_operator.is_equal (">") and other.relational_operator.is_equal ("<")
-					or  relational_operator.is_equal (">=") and other.relational_operator.is_equal ("<=") then
-					Result := constant.is_equal (other.constant.opposite) and then expression.is_equal (other.expression.negated_dup)
+				Result := relational_operator.is_equal (other.relational_operator)
+				if not Result then
+					-- If the relational operators differ check if the two constraints are not negated versions
+					-- X - Y < 5 is_equal to Y - X > - 5
+					if relational_operator.is_equal ("<") and other.relational_operator.is_equal (">")
+						or  relational_operator.is_equal ("<=") and other.relational_operator.is_equal (">=")
+						or  relational_operator.is_equal (">") and other.relational_operator.is_equal ("<")
+						or  relational_operator.is_equal (">=") and other.relational_operator.is_equal ("<=") then
+						Result := constant.is_equal (other.constant.opposite) and then expression.is_equal (other.expression.negated_dup)
+					else
+						Result := False
+					end
 				else
 					Result := constant.is_equal (other.constant) and then expression.is_equal(other.expression)
 				end

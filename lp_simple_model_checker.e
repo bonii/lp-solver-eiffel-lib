@@ -1,6 +1,6 @@
 note
-	description: "Summary description for {LP_SIMPLE_MODEL_CHECKER}."
-	author: ""
+	description: "{LP_SIMPLE_MODEL_CHECKER} models a simple model checker which checks two models just by checking if they are the same reference"
+	author: "Vivek Shah"
 	date: "$Date$"
 	revision: "$Revision$"
 
@@ -13,6 +13,7 @@ inherit
 feature
 
 	is_same(model1 : LP_MODEL; model2 : LP_MODEL) : BOOLEAN
+		-- Check if two models are the same by checking if they are the same reference
 		do
 			if model1 = model2 then
 				Result := True
