@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="lp_solver application root class"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>application Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="application"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;lp_solver application root class&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../solver/application.html">APPLICATION</A>
+
+<SPAN CLASS="ekeyword">inherit</SPAN>
+	<SPAN CLASS="neclass">ARGUMENTS</SPAN>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../solver/application.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialization</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../solver/application.html#f_make">make</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Run application.</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">file_path</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">command</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">list_model_checker</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_model_list_checker.html">LP_MODEL_LIST_CHECKER</A>
+			<SPAN CLASS="elocal">simple_model_checker</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_simple_model_checker.html">LP_SIMPLE_MODEL_CHECKER</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">file_path</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_empty</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">command</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_empty</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">simple_model_checker</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">list_model_checker</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Enter the absolute location where the lp model files will be written eg. /home/bonii/ (press enter for default project directory) : &quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">read_line</SPAN>
+			<SPAN CLASS="elocal">file_path</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">last_string</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">twin</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%NEnter absolute path to the executable to run(eg. /usr/bin/lp_solve) : &quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">read_line</SPAN>
+			<SPAN CLASS="elocal">command</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">last_string</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">twin</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Running test cases with simple model checker which recognises 2 models as same if they are same references %N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../solver/application.html#f_run_tests">run_tests</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file_path</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">command</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">simple_model_checker</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Running test cases with intelligent model checker which performs extra tasks of recognising 2 models %N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../solver/application.html#f_run_tests">run_tests</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file_path</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">command</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">list_model_checker</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_run_tests"></A><A CLASS="efeature" HREF="../solver/application.html#f_run_tests">run_tests</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file_path</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">command</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">model_checker</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_model_checker.html">LP_MODEL_CHECKER</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Run the test cases from the test cases suite</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">test</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_test.html">LP_TEST</A>
+			<SPAN CLASS="elocal">model1</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">model2</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">model3</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">model4</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">model5</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">model6</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_model.html">LP_MODEL</A>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_blocking_daemon.html">LP_BLOCKING_DAEMON</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">test</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file_path</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">command</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">model_checker</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">model1</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_test.html#f_get_model_1">get_model_1</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Test Model 1 :&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model1</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model1</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N Rerunning the previous model again using the same object%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model1</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">model2</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_test.html#f_get_model_2">get_model_2</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Test Model 2 :&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model2</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model2</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">model3</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_test.html#f_get_model_3">get_model_3</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Test Model 3 :&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model3</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model3</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">model4</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_test.html#f_get_model_4">get_model_4</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Test Model 4 :&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model4</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model4</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">model5</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_test.html#f_get_model_5">get_model_5</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Test Model 5 :&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model5</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model5</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">model6</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_test.html#f_get_model_6">get_model_6</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Test Model 6 :&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model6</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">daemon</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../solver/lp_blocking_daemon.html#f_run_model">run_model</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model6</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../solver/application.html">APPLICATION</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="application"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

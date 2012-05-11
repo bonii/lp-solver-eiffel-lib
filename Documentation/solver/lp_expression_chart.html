@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_EXPRESSION} models an expression in a Linear Programming Problem for ex. 2X + 3Y."/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_expression Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_expression"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_expression_chart.html">LP_EXPRESSION</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../solver/index.html">solver</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="eclass" HREF="../solver/lp_expression_chart.html">LP_EXPRESSION</A><SPAN CLASS="estring"> models an expression in a Linear Programming Problem for ex. 2X + 3Y.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../solver/lp_expression.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../solver/lp_expression.html#f_make_from">make_from</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<SPAN CLASS="neclass">ANY</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_list_chart.html">LP_LIST</A><SPAN CLASS="echar">*</SPAN>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`expression' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_expression">expression</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`get_compacted_expression' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_get_compacted_expression">get_compacted_expression</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">literal_list</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_expression.html#f_expression">expression</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_expression.html#f_expression">expression</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`is_equal' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../solver/lp_expression_chart.html">LP_EXPRESSION</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_equal_any_order' was declared in LP_LIST"><A CLASS="efeature" HREF="../solver/lp_list.html#f_is_equal_any_order">is_equal_any_order</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">list1</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">list2</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`negated_dup' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_negated_dup">negated_dup</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../solver/lp_expression_chart.html">LP_EXPRESSION</A></SPAN>
+	<SPAN TITLE="`out' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_out">out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`add_literal' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_add_literal">add_literal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_literal</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_make">make</A></SPAN>
+	<SPAN TITLE="`make_from' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_make_from">make_from</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_expression</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_expression.html#f_expression">expression</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`negate' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_negate">negate</A></SPAN>
+	<SPAN TITLE="`set_compacted_expression' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_expression.html#f_set_compacted_expression">set_compacted_expression</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">literal_list</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_expression.html#f_expression">expression</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_expression_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_expression"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

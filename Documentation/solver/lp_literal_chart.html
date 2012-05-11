@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_LITERAL} models a single literal which form building blocks of expressions for example 2X"/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_literal Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_literal"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../solver/index.html">solver</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="estring"> models a single literal which form building blocks of expressions for example 2X&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../solver/lp_literal.html#f_make_from">make_from</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../solver/lp_literal.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<SPAN CLASS="neclass">ANY</SPAN>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`is_equal' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_same' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_is_same">is_same</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">literal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`out' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_out">out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`quantifier' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_quantifier">quantifier</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`variable' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_variable">variable</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`make' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_make">make</A></SPAN>
+	<SPAN TITLE="`make_from' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_make_from">make_from</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">literal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <A CLASS="eclass" HREF="../solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_quantifier' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_set_quantifier">set_quantifier</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_quantifier</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_literal.html#f_quantifier">quantifier</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_variable' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_literal.html#f_set_variable">set_variable</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_variable</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_literal.html#f_variable">variable</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_literal_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_literal"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

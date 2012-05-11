@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="keywords" content="Eiffel system"/>
+<TITLE>solver class dictionary</TITLE>
+<LINK REL="stylesheet" HREF="default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="nolink1">Classes</TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE=""></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">Classes</SPAN>
+	<A CLASS="eclass" HREF="solver/application_chart.html">APPLICATION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> lp_solver application root class</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_blocking_daemon_chart.html">LP_BLOCKING_DAEMON</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><SPAN CLASS="ecomment">{LP_SINGLEBLOCKINGDAEMON}</SPAN><SPAN CLASS="ecomment"> models the daemon which runs the LP models and also contains a cache of previous jobs.</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_cache_entry_chart.html">LP_CACHE_ENTRY</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><SPAN CLASS="ecomment">{LP_CACHEENTRY}</SPAN><SPAN CLASS="ecomment"> models a single cache entry used by the daemon.</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_constraint_chart.html">LP_CONSTRAINT</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_constraint_chart.html">LP_CONSTRAINT</A><SPAN CLASS="ecomment"> models a Linear Programming constraint.</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_daemon_chart.html">LP_DAEMON</A><SPAN CLASS="echar">*</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_daemon_chart.html">LP_DAEMON</A><SPAN CLASS="ecomment"> models the abstract class to run lp solve jobs</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_expression_chart.html">LP_EXPRESSION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_expression_chart.html">LP_EXPRESSION</A><SPAN CLASS="ecomment"> models an expression in a Linear Programming Problem for ex. 2X + 3Y.</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_list_chart.html">LP_LIST</A><SPAN CLASS="echar">*</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_list_chart.html">LP_LIST</A><SPAN CLASS="ecomment"> models a LP List class to decorate classes with lists with a special list checker which checks list objects in out of order</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_literal_chart.html">LP_LITERAL</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_literal_chart.html">LP_LITERAL</A><SPAN CLASS="ecomment"> models a single literal which form building blocks of expressions for example 2X</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_model_chart.html">LP_MODEL</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_model_chart.html">LP_MODEL</A><SPAN CLASS="ecomment"> models a LP model.</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_model_checker_chart.html">LP_MODEL_CHECKER</A><SPAN CLASS="echar">*</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_model_checker_chart.html">LP_MODEL_CHECKER</A><SPAN CLASS="ecomment"> models the abstract model checker. More complicated model checking can be done by creating new model checkers and redefining the method</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_model_list_checker_chart.html">LP_MODEL_LIST_CHECKER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_model_list_checker_chart.html">LP_MODEL_LIST_CHECKER</A><SPAN CLASS="ecomment"> is an advanced model checker which checks list equality in any order and LP object equality</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_objective_chart.html">LP_OBJECTIVE</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_objective_chart.html">LP_OBJECTIVE</A><SPAN CLASS="ecomment"> models the objective function.</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_result_chart.html">LP_RESULT</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_result_chart.html">LP_RESULT</A><SPAN CLASS="ecomment"> models a LP Result</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_simple_model_checker_chart.html">LP_SIMPLE_MODEL_CHECKER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_simple_model_checker_chart.html">LP_SIMPLE_MODEL_CHECKER</A><SPAN CLASS="ecomment"> models a simple model checker which checks two models just by checking if they are the same reference</SPAN>
+
+	<A CLASS="eclass" HREF="solver/lp_test_chart.html">LP_TEST</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="eclass" HREF="solver/lp_test_chart.html">LP_TEST</A><SPAN CLASS="ecomment"> models a test factory which generates various test cases to be run by application</SPAN>
+
+<FORM ONSUBMIT="go_to('',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="nolink1">Classes</TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE=""></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

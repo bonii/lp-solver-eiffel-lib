@@ -1,0 +1,53 @@
+<!--
+	classList = new Array (
+		"APPLICATION",
+		"LP_BLOCKING_DAEMON",
+		"LP_CACHE_ENTRY",
+		"LP_CONSTRAINT",
+		"LP_DAEMON",
+		"LP_EXPRESSION",
+		"LP_LIST",
+		"LP_LITERAL",
+		"LP_MODEL",
+		"LP_MODEL_CHECKER",
+		"LP_MODEL_LIST_CHECKER",
+		"LP_OBJECTIVE",
+		"LP_RESULT",
+		"LP_SIMPLE_MODEL_CHECKER",
+		"LP_TEST"
+	);
+
+	locationList = new Array (
+		"solver/application_chart.html",
+		"solver/lp_blocking_daemon_chart.html",
+		"solver/lp_cache_entry_chart.html",
+		"solver/lp_constraint_chart.html",
+		"solver/lp_daemon_chart.html",
+		"solver/lp_expression_chart.html",
+		"solver/lp_list_chart.html",
+		"solver/lp_literal_chart.html",
+		"solver/lp_model_chart.html",
+		"solver/lp_model_checker_chart.html",
+		"solver/lp_model_list_checker_chart.html",
+		"solver/lp_objective_chart.html",
+		"solver/lp_result_chart.html",
+		"solver/lp_simple_model_checker_chart.html",
+		"solver/lp_test_chart.html"
+	);
+
+	function indexOfClass (name) {
+		for (i = 0; i < classList.length; i++) {
+			if (name == classList[i]) return i;
+		}
+		return -1;
+	};
+
+	function go_to (baseLocation, className) {
+		var index = indexOfClass (className.toUpperCase ());
+		if (index >= 0) {
+			window.location = baseLocation + locationList[index];
+		} else {
+			alert ("Class " + className.toUpperCase () + " does not exist in system");
+		}
+	}
+// -->

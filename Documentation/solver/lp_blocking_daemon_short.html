@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_SINGLEBLOCKINGDAEMON} models the daemon which runs the LP models and also contains a cache of previous jobs."/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_blocking_daemon Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_blocking_daemon"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">{LP_SINGLEBLOCKINGDAEMON}</SPAN><SPAN CLASS="estring"> models the daemon which runs the LP models and also contains a cache of previous jobs.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Vivek Shah&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_blocking_daemon_short.html">LP_BLOCKING_DAEMON</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_cache"></A><A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_cache">cache</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_cache_entry_short.html">LP_CACHE_ENTRY</A><SPAN CLASS="esymbol">]</SPAN>
+
+	<A NAME="f_file_location"></A><A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_file_location">file_location</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_model_checker"></A><A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_model_checker">model_checker</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_model_checker_short.html">LP_MODEL_CHECKER</A>
+
+	<A NAME="f_lp_command"></A><A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_lp_command">lp_command</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_file_location</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_file_location">file_location</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_lp_command</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_lp_command">lp_command</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_checker</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_model_checker">model_checker</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create a daemon from the constituent components</SPAN>
+
+	<A NAME="f_run_model"></A><A CLASS="efeature" HREF="../solver/lp_blocking_daemon_short.html#f_run_model">run_model</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">model</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_model_short.html">LP_MODEL</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Run the model. Also checks if the model exists in the cache</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../solver/lp_blocking_daemon_short.html">LP_BLOCKING_DAEMON</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_blocking_daemon_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_blocking_daemon"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_MODEL} models a LP model."/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_model Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_model"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_model_chart.html">LP_MODEL</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../solver/index.html">solver</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="eclass" HREF="../solver/lp_model_chart.html">LP_MODEL</A><SPAN CLASS="estring"> models a LP model.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_make_from">make_from</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<SPAN CLASS="neclass">ANY</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_list_chart.html">LP_LIST</A><SPAN CLASS="echar">*</SPAN>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`constraints' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_constraints">constraints</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_constraint_chart.html">LP_CONSTRAINT</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`debug_out' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_debug_out">debug_out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`is_equal' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../solver/lp_model_chart.html">LP_MODEL</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_equal_any_order' was declared in LP_LIST"><A CLASS="efeature" HREF="../solver/lp_list.html#f_is_equal_any_order">is_equal_any_order</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">list1</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">list2</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`objective' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_objective">objective</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_objective_chart.html">LP_OBJECTIVE</A></SPAN>
+	<SPAN TITLE="`out' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_out">out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`variable_list' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_variable_list">variable_list</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">]</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`add_constraint' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_add_constraint">add_constraint</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newconstraint</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_constraint_chart.html">LP_CONSTRAINT</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_make">make</A></SPAN>
+	<SPAN TITLE="`make_from' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_make_from">make_from</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_variable_list</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_variable_list">variable_list</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_constraints</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_constraints">constraints</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_constraint_chart.html">LP_CONSTRAINT</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_objective</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_objective">objective</A><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../solver/lp_objective_chart.html">LP_OBJECTIVE</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_constraints' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_set_constraints">set_constraints</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newconstraints</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_constraints">constraints</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../solver/lp_constraint_chart.html">LP_CONSTRAINT</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_objective' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_set_objective">set_objective</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newobjective</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_objective">objective</A><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../solver/lp_objective_chart.html">LP_OBJECTIVE</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_variable_list' is declared in `Current'"><A CLASS="efeature" HREF="../solver/lp_model.html#f_set_variable_list">set_variable_list</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newlist</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_model.html#f_variable_list">variable_list</A><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">ARRAYED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_model_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_model"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

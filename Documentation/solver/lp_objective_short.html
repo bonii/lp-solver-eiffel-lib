@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_OBJECTIVE} models the objective function."/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_objective Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_objective"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="eclass" HREF="../solver/lp_objective_short.html">LP_OBJECTIVE</A><SPAN CLASS="estring"> models the objective function.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Vivek Shah&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_objective_short.html">LP_OBJECTIVE</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_make_from">make_from</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_expression"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_expression">expression</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_expression_short.html">LP_EXPRESSION</A>
+
+	<A NAME="f_minimize"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_minimize">minimize</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+
+	<A NAME="f_set_expression"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_set_expression">set_expression</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newexpression</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_expression">expression</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set the expression in the objective</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_expression">expression</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">newexpression</SPAN>
+
+	<A NAME="f_set_minimize"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_set_minimize">set_minimize</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">minflag</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_minimize">minimize</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set the minimize flag to denote if the objective is to minimize of maximize</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_minimize">minimize</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">minflag</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_make">make</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create an empty objective</SPAN>
+
+	<A NAME="f_make_from"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_make_from">make_from</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_expression</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_expression">expression</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">min_flag</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_minimize">minimize</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create an objective from the constituent components</SPAN>
+
+	<A NAME="f_out"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_out">out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Generate a string representation of the objective in LP format</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> If it is minimization job negate the objective expression</SPAN>
+
+	<A NAME="f_is_equal"></A><A CLASS="efeature" HREF="../solver/lp_objective_short.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Check if two objectives are the same</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../solver/lp_objective_short.html">LP_OBJECTIVE</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_objective_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_objective"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

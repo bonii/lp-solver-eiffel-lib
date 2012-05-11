@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_CONSTRAINT} models a Linear Programming constraint."/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_constraint Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_constraint"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="eclass" HREF="../solver/lp_constraint_short.html">LP_CONSTRAINT</A><SPAN CLASS="estring"> models a Linear Programming constraint.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Vivek Shah&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_constraint_short.html">LP_CONSTRAINT</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_make_from">make_from</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_expression"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_expression">expression</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_expression_short.html">LP_EXPRESSION</A>
+
+	<A NAME="f_relational_operator"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_relational_operator">relational_operator</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_constant"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_constant">constant</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_set_expression"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_set_expression">set_expression</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newexpression</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_expression">expression</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set expression in the contraint</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_expression">expression</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">newexpression</SPAN>
+
+	<A NAME="f_set_relational_operator"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_set_relational_operator">set_relational_operator</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newop</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_relational_operator">relational_operator</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set relational operator in the constraint</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_is_valid_op">is_valid_op</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newop</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_relational_operator">relational_operator</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">newop</SPAN>
+
+	<A NAME="f_set_constant"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_set_constant">set_constant</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newconstant</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_constant">constant</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set constant in the constraint</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_constant">constant</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">newconstant</SPAN>
+
+	<A NAME="f_is_valid_op"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_is_valid_op">is_valid_op</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newop</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_relational_operator">relational_operator</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Check if the operator is a valid Linear Programming Operator</SPAN>
+
+	<A NAME="f_out"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_out">out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Generate a string representation of the constraint in LP format</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_make">make</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create clause to make an empty constraint</SPAN>
+
+	<A NAME="f_make_from"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_make_from">make_from</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_expression</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_expression">expression</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_op</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_relational_operator">relational_operator</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_constant</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_constant">constant</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create clause to create a constraint from the constituent componenets</SPAN>
+
+	<A NAME="f_is_equal"></A><A CLASS="efeature" HREF="../solver/lp_constraint_short.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Check if two constraints are the same</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../solver/lp_constraint_short.html">LP_CONSTRAINT</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_constraint_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_constraint"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

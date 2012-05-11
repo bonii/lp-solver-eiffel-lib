@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 6.8.8.6627 GPL Edition - linux-x86-64">
+<meta name="description" content="{LP_CACHEENTRY} models a single cache entry used by the daemon."/>
+<meta name="author" content="Vivek Shah"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>lp_cache_entry Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_cache_entry"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">{LP_CACHEENTRY}</SPAN><SPAN CLASS="estring"> models a single cache entry used by the daemon.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Vivek Shah&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../solver/lp_cache_entry_short.html">LP_CACHE_ENTRY</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_make_from">make_from</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_model"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_model">model</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_model_short.html">LP_MODEL</A>
+
+	<A NAME="f_is_running"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_is_running">is_running</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+
+	<A NAME="f_run_result"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_run_result">run_result</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../solver/lp_result_short.html">LP_RESULT</A>
+
+	<A NAME="f_set_model"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_set_model">set_model</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">newmodel</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_model">model</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set the model in the cache entry</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_model">model</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">newmodel</SPAN>
+
+	<A NAME="f_set_is_running"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_set_is_running">set_is_running</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">runval</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_is_running">is_running</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set whether the model is currently running. Useful for extension into concurrent lp solve invocations</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_is_running">is_running</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">runval</SPAN>
+
+	<A NAME="f_set_run_result"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_set_run_result">set_run_result</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">runresult</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_run_result">run_result</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set the run result in the cache entry</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_run_result">run_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">runresult</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_make">make</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create an empty cache entry</SPAN>
+
+	<A NAME="f_make_from"></A><A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_make_from">make_from</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">new_model</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_model">model</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">run_val</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_is_running">is_running</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">new_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../solver/lp_cache_entry_short.html#f_run_result">run_result</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create a cache entry from the existing components</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../solver/lp_cache_entry_short.html">LP_CACHE_ENTRY</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="lp_cache_entry_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="lp_cache_entry"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+
