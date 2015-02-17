@@ -24,6 +24,7 @@ feature
 
 feature {NONE}
 	are_lists_equal(list1 : LIST[ANY] ; list2 : LIST[ANY]) : BOOLEAN
+		-- Check if list elements of first list are present in the other list
 		do
 			from
 				list1.start

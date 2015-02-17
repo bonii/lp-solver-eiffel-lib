@@ -56,7 +56,7 @@ feature
 		end
 
 feature{LP_DAEMON}
-	-- Only daemons should be able to set the internal result representation
+	-- Only daemons should be able to set the internal result representation as of now
 
 	set_result_string_dump(result_string_dump : STRING)
 		-- Set the string dump in the result object
